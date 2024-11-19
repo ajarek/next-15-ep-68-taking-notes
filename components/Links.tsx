@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button'
+import { Archive, House, Tag } from 'lucide-react'
 
 const Links = () => {
   
@@ -8,26 +10,30 @@ const Links = () => {
     <div className=' w-full flex flex-col items-start justify-end gap-4'>
      
         <Link
-          href='/about-us'
-          className={`  text-xl hover:text-primary focus:text-primary `}
+          href='/'
+          className={`${buttonVariants({
+            variant: 'default',
+          })} h-7 text-[18px] w-full`}
           aria-label='Shop'
         >
-          O nas
+          <House/>All Notes
         </Link>
         <Link
-          href='/suits'
-          className={`  text-xl hover:text-primary focus:text-primary `}
+          href='/archive'
+          className={`${buttonVariants({
+            variant: 'default',
+          })} h-7 text-[18px] w-full`}
           aria-label='About Us'
         >
-          Garnitury
+         <Archive /> Archived Notes
         </Link>
 
         <Link
-          href='/contact'
-          className={`  text-xl hover:text-primary focus:text-primary `}
+          href='/tags'
+          className={`w-full flex justify-center items-center gap-2  text-[18px] hover:text-primary focus:text-primary `}
           aria-label='Contact'
         >
-          Kontakt
+        <Tag/> Tags :
         </Link>
 
         

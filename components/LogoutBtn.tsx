@@ -1,22 +1,18 @@
-'use client'
-
-import { Button } from './ui/button'
-import { useRouter } from 'next/navigation'
+import { LogOut } from "lucide-react"
+import { buttonVariants } from "@/components/ui/button"
+import Link from "next/link"
 
 const LogoutBtn = () => {
-  const router = useRouter()
-  const handleLogout = () => {
-    router.push('/api/auth/signout')
-  }
   return (
-    <Button
-      variant='destructive'
-      onClick={handleLogout}
-      className='h-7 text-lg'
-      aria-label='logout'
+    <Link
+      className={`${buttonVariants({
+        variant: "destructive",
+      })} h-7 text-[18px] w-full`}
+      href={"/api/auth/signout"}
+      aria-label='Login'
     >
-      Logout
-    </Button>
+      <LogOut /> Logout
+    </Link>
   )
 }
 
