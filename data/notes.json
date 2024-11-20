@@ -3,18 +3,19 @@
         "id": 1,
         "title": "React Performance Optimization",
         "tags": ["react", "performance", "optimization"],
-        "content-1": {
+        "content1": {
             "title": "Component-Level Optimization Memoization:",
             "content": " Use React.memo or useMemo to prevent unnecessary re-renders of components when their props haven't changed.Pure Components: Leverage React.PureComponent for shallow comparison of props and state.Conditional Rendering: Render only necessary components based on state or props to minimize DOM manipulations.Virtualization: Employ react-window or react-virtualized for large lists or tables to render only visible items."},
-        "content-2": {
+        "content2": {
             "title": "State Management Optimization:",
             "content": "Minimal State Updates: Update only the necessary parts of the state to reduce re-renders.Context API or Redux: Choose an appropriate state management solution based on application complexity.Immutable Data Structures: Use libraries like Immutable.js to minimize object mutations and leverage React's shallow comparison."
         },
-        "content-3": {
+        "content3": {
             "title": "Code Splitting and Bundling:",
             "content": "Code Splitting: Divide your application into smaller bundles to load only the necessary code at runtime.Lazy Loading: Load components on demand using React.lazy and Suspense to improve initial load times.Bundling Optimization: Minimize bundle size using tools like Webpack or Rollup with appropriate plugins."
         },
         
+        "isArchive":false,
         "createdAt": "2024-11-17",
         "updatedAt": "2024-11-17"
 
@@ -23,18 +24,19 @@
         "id": 2,
         "title": "Next.js Performance Optimization",
         "tags": ["next.js", "performance", "optimization"],
-        "content-1": {
+        "content1": {
             "title": "Server-Side Rendering:",
             "content": "Use getStaticProps or getServerSideProps to pre-render pages on the server, reducing the initial load time and improving SEO."
         },
-        "content-2": {
+        "content2": {
             "title": "Static Site Generation:",
             "content": "Use getStaticProps to generate static HTML files for each page, reducing the initial load time and improving SEO."
         },
-        "content-3": {
+        "content3": {
             "title": "Code Splitting and Bundling:",
             "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
         },
+        "isArchive":false,
         "createdAt": "2024-11-18",
         "updatedAt": "2024-11-18"
     },
@@ -42,18 +44,19 @@
         "id": 3,
         "title": "React Native Performance Optimization",
         "tags": ["react-native", "performance", "optimization"],
-        "content-1": {
+        "content1": {
             "title": "Component-Level Optimization:",
             "content": "Use React.memo or useMemo to prevent unnecessary re-renders of components when their props haven't changed."
         },
-        "content-2": {
+        "content2": {
             "title": "State Management Optimization:",
             "content": "Minimal State Updates: Update only the necessary parts of the state to reduce re-renders."
         },
-        "content-3": {
+        "content3": {
             "title": "Code Splitting and Bundling:",
             "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
         },
+        "isArchive":false,
         "createdAt": "2024-11-19",
         "updatedAt": "2024-11-19"
     }

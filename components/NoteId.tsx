@@ -1,8 +1,45 @@
-import React from 'react'
+import notesData from "@/data/notes.json"
+import { CalendarDays,  Tag, Archive, Trash2 } from 'lucide-react'
+import { Button } from "./ui/button"
 
-const NoteId = ({id}:{id:string}) => {
+const NoteId = ({ id }: { id: string }) => {
+  const note = notesData.find((note) => note.id === +id)
+  if(!id){return <div className="text-xl text-center font-bold mt-12">Select a note</div>}
   return (
-    <div>NoteId {id}</div>
+    <div className='min-h-[calc(100vh-64px)]  grid grid-cols-[3fr_1fr] p-4'>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl font-bold">{note?.title}</h1>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+           <Tag/> Tags:
+          {note?.tags.map((tag, index) => (
+            
+            <p  key={index}>{tag}</p>
+          ))}
+          </div>
+          <div className="flex items-center gap-2"><CalendarDays />Added{note?.createdAt}</div>
+          <div className="flex items-center gap-2"><CalendarDays />Last edited{note?.updatedAt}</div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div>
+            <h2 className="font-semibold">{note?.content1.title}</h2>
+            <p>{note?.content1.content}</p>
+          </div>
+          <div>
+            <h2 className="font-semibold">{note?.content2.title}</h2>
+            <p>{note?.content2.content}</p>
+          </div>
+          <div>
+            <h2 className="font-semibold">{note?.content3.title}</h2>
+            <p>{note?.content3.content}</p>
+          </div>
+        </div>
+      </div>
+      <div className='flex flex-col gap-4 border-l-2 p-4'>
+        <Button><Archive/>Archive Note</Button>
+        <Button variant={'destructive'}><Trash2 />Delete Note</Button>
+      </div>
+    </div>
   )
 }
 

@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
-import { Archive, House, Tag } from 'lucide-react'
+import { Archive, House } from 'lucide-react'
+import Tags from './Tags'
 
 const Links = () => {
   
@@ -28,13 +29,7 @@ const Links = () => {
          <Archive /> Archived Notes
         </Link>
 
-        <Link
-          href='/tags'
-          className={`w-full flex justify-center items-center gap-2  text-[18px] hover:text-primary focus:text-primary `}
-          aria-label='Contact'
-        >
-        <Tag/> Tags :
-        </Link>
+          <Tags/>
 
         
      
