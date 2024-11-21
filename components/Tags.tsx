@@ -4,7 +4,7 @@ import Link from "next/link"
 const tags= notesData.map((note) => note.tags).flat(1)
 const Tags = () => {
   return (
-    <div className="flex flex-col w-full  justify-center items-start gap-2 ">
+    <div className="flex flex-col max-lg:hidden w-full   justify-center items-start gap-2 ">
       <h1 className={`  text-[18px] hover:text-primary focus:text-primary `}>
          Tags :
       </h1>

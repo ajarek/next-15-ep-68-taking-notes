@@ -16,11 +16,11 @@ const Logout = async ({ session }: { session: Session | null }) => {
         <Link
           className={`${buttonVariants({
             variant: 'default',
-          })} h-7 text-[18px] w-full`}
+          })} h-7 text-[18px] w-full max-lg:w-fit`}
           href={'/register'}
           aria-label='Login'
         >
-         <KeyRound /> Login
+         <KeyRound /> <span className='max-lg:hidden'>Login</span>
         </Link>
       )}
       

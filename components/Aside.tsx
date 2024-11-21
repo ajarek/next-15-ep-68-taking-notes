@@ -10,7 +10,7 @@ const Aside = async () => {
   const session = await auth()
  
   return (
-    <div className='fixed  w-[200px] min-h-screen flex flex-col justify-start items-start gap-4  px-4  border-r-2'>
+    <div className='fixed max-lg:hidden  w-[200px] min-h-screen flex flex-col justify-start items-start gap-4  px-4  border-r-2'>
       <div className="w-full flex items-center justify-between">
         <Link
           href='/'

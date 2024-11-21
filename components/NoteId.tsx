@@ -6,7 +6,7 @@ const NoteId = ({ id }: { id: string }) => {
   const note = notesData.find((note) => note.id === +id)
   if(!id){return <div className="text-xl text-center font-bold mt-12">Select a note</div>}
   return (
-    <div className='min-h-[calc(100vh-64px)]  grid grid-cols-[3fr_1fr] p-4'>
+    <div className='min-h-[calc(100vh-64px)]  grid grid-cols-[3fr_1fr] max-lg:grid-cols-1 p-4'>
       <div className="flex flex-col gap-4">
         {note?.isArchive && <h1 className="text-2xl text-gray-400 font-bold uppercase ">Archived Note</h1>}
         <h1 className="text-xl font-bold">{note?.title}</h1>
@@ -36,7 +36,7 @@ const NoteId = ({ id }: { id: string }) => {
           </div>
         </div>
       </div>
-      <div className='flex flex-col gap-4 border-l-2 p-4'>
+      <div className='flex flex-col gap-4 border-l-2 max-lg:border-none p-4'>
         <Button><Archive/>Archive Note</Button>
         <Button variant={'destructive'}><Trash2 />Delete Note</Button>
       </div>

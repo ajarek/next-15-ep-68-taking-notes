@@ -7,11 +7,11 @@ const LogoutBtn = () => {
     <Link
       className={`${buttonVariants({
         variant: "destructive",
-      })} h-7 text-[18px] w-full`}
+      })} h-7 text-[18px] w-full max-lg:w-fit`}
       href={"/api/auth/signout"}
       aria-label='Login'
     >
-      <LogOut /> Logout
+      <LogOut /> <span className='max-lg:hidden'>Logout</span>
     </Link>
   )
 }

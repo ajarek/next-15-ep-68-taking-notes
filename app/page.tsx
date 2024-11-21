@@ -24,41 +24,43 @@ export default async function Home({
   return (
     <>
       {session ? (
-        <div className='min-h-screen ml-[200px] flex flex-col  '>
+        <div className='min-h-screen max-lg:ml-0 ml-[200px] flex flex-col  '>
           <div className=' h-16 flex  items-center justify-between px-4 border-b-2'>
             <h1 className='min-w-64 flex items-center gap-2 text-2xl font-bold text-primary italic'>
               All Notes
             </h1>
             <Input className='w-96' placeholder='Search' />
           </div>
-          <div className='grid grid-cols-[1fr_3fr] p-2'>
+          <div className='grid grid-cols-[1fr_3fr] max-lg:grid-cols-1 p-2'>
             <div className='flex flex-col gap-2'>
               <Button className='flex items-center gap-2'>
                 <Plus />
                 Create New Note
               </Button>
-              {notesData
-                .filter(
-                  (note) =>
-                    note.tags.includes(searchParams.tag) || !searchParams.tag
-                )
-                .map((note) => (
-                  <Card key={note.id}>
-                    <Link href={`/?id=${note.id}`}>
-                      <CardHeader>
-                        <CardTitle>{note.title}</CardTitle>
-                        <CardDescription>
-                          {note.tags.map((nt, index) => (
-                            <p key={index}>{nt}</p>
-                          ))}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardFooter>
-                        <p>{note.createdAt}</p>
-                      </CardFooter>
-                    </Link>
-                  </Card>
-                ))}
+              <div className="max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 max-lg:gap-2">
+                {notesData
+                  .filter(
+                    (note) =>
+                      note.tags.includes(searchParams.tag) || !searchParams.tag
+                  )
+                  .map((note) => (
+                    <Card key={note.id}>
+                      <Link href={`/?id=${note.id}`}>
+                        <CardHeader>
+                          <CardTitle>{note.title}</CardTitle>
+                          <CardDescription>
+                            {note.tags.map((nt, index) => (
+                              <p key={index}>{nt}</p>
+                            ))}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardFooter>
+                          <p>{note.createdAt}</p>
+                        </CardFooter>
+                      </Link>
+                    </Card>
+                  ))}
+              </div>
             </div>
 
             <div className=''>

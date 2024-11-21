@@ -1,11 +1,12 @@
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 
 const StartPage = () => {
   return (
-    <div className='min-h-screen ml-[200px] flex flex-col justify-center items-center'>
+    <div className='min-h-screen ml-[200px] max-lg:ml-0 flex flex-col justify-center items-center'>
       <div className='flex'>
-          <h1 className="self-end mb-2 text-2xl italic">Log in...</h1>
+          <Link href='/register' className="self-end mb-2 text-2xl italic">Log in...</Link>
         <Image
           src='/pen.png'
           alt='logo'

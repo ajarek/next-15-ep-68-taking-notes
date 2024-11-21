@@ -26,7 +26,7 @@ export default async function Archive({
   return (
     <>
       {session ? (
-        <div className='min-h-screen ml-[200px] flex flex-col  '>
+        <div className='min-h-screen max-lg:ml-0 ml-[200px] flex flex-col  '>
           <div className=' h-16 flex  items-center justify-between px-4 border-b-2'>
             <h1 className='min-w-64 flex items-center gap-2 text-2xl font-bold text-primary italic'>
               All Notes
