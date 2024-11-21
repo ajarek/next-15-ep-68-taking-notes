@@ -5,11 +5,10 @@ import Image from "next/image"
 import Link from "next/link"
 import Logout from "@/components/Logout"
 import { auth } from "@/app/api/auth/auth"
-import { buttonVariants } from "./ui/button"
 
 const Aside = async () => {
   const session = await auth()
-  const { user } = (session as any) || {}
+ 
   return (
     <div className='fixed  w-[200px] min-h-screen flex flex-col justify-start items-start gap-4  px-4  border-r-2'>
       <div className="w-full flex items-center justify-between">
@@ -34,17 +33,8 @@ const Aside = async () => {
       </div>
       <Logout session={session} />
 
-      {user?.admin && (
-        <Link
-          href='/dashboard'
-          className={`${buttonVariants({
-            variant: 'default',
-          })} h-7 text-[18px] w-full`}
-        >
-          Panel
-        </Link>
-      )}
-      <Links />
+      {session &&  <Links />}
+     
     </div>
   )
 }

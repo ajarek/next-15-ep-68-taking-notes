@@ -14,7 +14,7 @@ export const {
   theme: {
     colorScheme: 'dark', // "auto" | "dark" | "light"
     brandColor: '#0E78F9', // Hex color code
-    logo: '/images/logo.png', // Absolute URL to image
+    logo: '/pen.png', // Absolute URL to image
     buttonText: '#ffffff', // Hex color code
   },
 
