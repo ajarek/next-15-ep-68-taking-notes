@@ -59,5 +59,25 @@
         "isArchive":false,
         "createdAt": "2024-11-19",
         "updatedAt": "2024-11-19"
+    },
+    {
+        "id": 4,
+        "title": "Performance Optimization Best Practices",
+        "tags": ["performance", "optimization"],
+        "content1": {
+            "title": "Component-Level Optimization:",
+            "content": "Use React.memo or useMemo to prevent unnecessary re-renders of components when their props haven't changed."
+        },
+        "content2": {
+            "title": "State Management Optimization:",
+            "content": "Minimal State Updates: Update only the necessary parts of the state to reduce re-renders."
+        },
+        "content3": {
+            "title": "Code Splitting and Bundling:",
+            "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
+        },
+        "isArchive":true,
+        "createdAt": "2024-11-20",
+        "updatedAt": "2024-11-20"
     }
 ]

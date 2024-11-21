@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 
 
-export default function Home({searchParams}:{searchParams:{id:string}}) {
+export default function Home({searchParams}:{searchParams:{id:string, tag:string}}) {
  
   return (
     <div className='min-h-screen ml-[200px] flex flex-col  '>
@@ -27,7 +27,9 @@ export default function Home({searchParams}:{searchParams:{id:string}}) {
       <div className="grid grid-cols-[1fr_3fr] p-2">
          <div className="flex flex-col gap-2">
           <Button className="flex items-center gap-2"><Plus />Create New Note</Button>
-          {notesData.map((note) => (
+          {notesData
+          .filter((note) => note.tags.includes(searchParams.tag) || !searchParams.tag)
+          .map((note) => (
            <Card key={note.id}>
             <Link href={`/?id=${note.id}`}>
            <CardHeader>

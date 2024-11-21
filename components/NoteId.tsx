@@ -8,6 +8,7 @@ const NoteId = ({ id }: { id: string }) => {
   return (
     <div className='min-h-[calc(100vh-64px)]  grid grid-cols-[3fr_1fr] p-4'>
       <div className="flex flex-col gap-4">
+        {note?.isArchive && <h1 className="text-2xl text-gray-400 font-bold uppercase ">Archived Note</h1>}
         <h1 className="text-xl font-bold">{note?.title}</h1>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
