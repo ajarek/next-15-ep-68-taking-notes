@@ -1,8 +1,10 @@
-import notesData from "@/data/notes.json"
+
 import { CalendarDays,  Tag, Archive, Trash2 } from 'lucide-react'
 import { Button } from "./ui/button"
+import { fetchNotes } from '@/lib/fetch'
 
-const NoteId = ({ id }: { id: string }) => {
+const NoteId = async({ id }: { id: string }) => {
+  const notesData= await fetchNotes()
   const note = notesData.find((note) => note.id === +id)
   if(!id){return <div className="text-xl text-center font-bold mt-12">Select a note</div>}
   return (
@@ -18,8 +20,8 @@ const NoteId = ({ id }: { id: string }) => {
             <p  key={index}>{tag}</p>
           ))}
           </div>
-          <div className="flex items-center gap-2"><CalendarDays />Added{note?.createdAt}</div>
-          <div className="flex items-center gap-2"><CalendarDays />Last edited{note?.updatedAt}</div>
+          <div className="flex items-center gap-2"><CalendarDays /> Added {note?.createdAt}</div>
+          <div className="flex items-center gap-2"><CalendarDays /> Last edited {note?.updatedAt}</div>
         </div>
         <div className="flex flex-col gap-2">
           <div>

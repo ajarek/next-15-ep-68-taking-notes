@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input"
-import notesData from "@/data/notes.json"
+
 import {
   Card,
   CardDescription,
@@ -9,10 +9,11 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import NoteId from "@/components/NoteId"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 import { auth } from "@/app/api/auth/auth"
 import StartPage from "@/components/StartPage"
+import { fetchNotes } from '@/lib/fetch'
 
 export default async function Home({
   searchParams,
@@ -20,7 +21,7 @@ export default async function Home({
   searchParams: { id: string; tag: string }
 }) {
   const session = await auth()
-
+  const notesData= await fetchNotes()
   return (
     <>
       {session ? (
@@ -33,16 +34,19 @@ export default async function Home({
           </div>
           <div className='grid grid-cols-[1fr_3fr] max-lg:grid-cols-1 p-2'>
             <div className='flex flex-col gap-2'>
-              <Button className='flex items-center gap-2'>
+              <Link href='/add-note'  className={`${buttonVariants({
+            variant: 'default',
+          })} h-7 text-[18px] w-full`}>
                 <Plus />
                 Create New Note
-              </Button>
+              </Link>
               <div className="max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 max-lg:gap-2">
                 {notesData
                   .filter(
                     (note) =>
                       note.tags.includes(searchParams.tag) || !searchParams.tag
                   )
+                  .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                   .map((note) => (
                     <Card key={note.id}>
                       <Link href={`/?id=${note.id}`}>

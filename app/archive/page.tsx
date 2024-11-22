@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input"
-import notesData from "@/data/notes.json"
 import {
   Card,
   CardDescription,
@@ -13,12 +12,16 @@ import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 import { auth } from "@/app/api/auth/auth"
 import StartPage from "@/components/StartPage"
+import { fetchNotes } from '@/lib/fetch'
 
 export default async function Archive({
   searchParams,
 }: {
   searchParams: { id: string; tag: string }
 }) {
+
+  const notesData= await fetchNotes()
+
   const tagsArchive = notesData
     .filter((note) => note.isArchive === true)
     .flat(1)
