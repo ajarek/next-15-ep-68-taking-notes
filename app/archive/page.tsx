@@ -1,3 +1,4 @@
+import  {Search}  from "@/components/Search"
 import { Input } from "@/components/ui/input"
 import {
   Card,
@@ -17,7 +18,7 @@ import { fetchNotes } from '@/lib/fetch'
 export default async function Archive({
   searchParams,
 }: {
-  searchParams: { id: string; tag: string }
+  searchParams: { id: string; tag: string, query: string}
 }) {
 
   const notesData= await fetchNotes()
@@ -32,9 +33,9 @@ export default async function Archive({
         <div className='min-h-screen max-lg:ml-0 ml-[200px] flex flex-col  '>
           <div className=' h-16 flex  items-center justify-between px-4 border-b-2'>
             <h1 className='min-w-64 flex items-center gap-2 text-2xl font-bold text-primary italic'>
-              All Notes
+              Archive Notes
             </h1>
-            <Input className='w-96' placeholder='Search' />
+            <Search />
           </div>
           <div className='grid grid-cols-[1fr_3fr] p-2'>
             <div className='flex flex-col gap-2'>
@@ -43,6 +44,11 @@ export default async function Archive({
                 Create New Note
               </Button>
               {tagsArchive
+              .filter((note) => {
+                const searchQuery = searchParams?.query?.toUpperCase() || '';
+                const noteTitle = note?.title?.toUpperCase() || '';
+                return noteTitle.includes(searchQuery) || !searchParams?.query;
+              })
                 .filter(
                   (note) =>
                     note.tags.includes(searchParams.tag) || !searchParams.tag

@@ -1,7 +1,7 @@
-import { Input } from "@/components/ui/input"
-
+import  {Search}  from "@/components/Search"
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -18,10 +18,11 @@ import { fetchNotes } from '@/lib/fetch'
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { id: string; tag: string }
+  searchParams: { id: string; tag: string; query: string }
 }) {
   const session = await auth()
   const notesData= await fetchNotes()
+  
   return (
     <>
       {session ? (
@@ -30,7 +31,7 @@ export default async function Home({
             <h1 className='min-w-64 flex items-center gap-2 text-2xl font-bold text-primary italic'>
               All Notes
             </h1>
-            <Input className='w-96' placeholder='Search' />
+            <Search />
           </div>
           <div className='grid grid-cols-[1fr_3fr] max-lg:grid-cols-1 p-2'>
             <div className='flex flex-col gap-2'>
@@ -42,9 +43,14 @@ export default async function Home({
               </Link>
               <div className="max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 max-lg:gap-2">
                 {notesData
+                  .filter((note) => {
+                    const searchQuery = searchParams?.query?.toUpperCase() || '';
+                    const noteTitle = note?.title?.toUpperCase() || '';
+                    return noteTitle.includes(searchQuery) || !searchParams?.query;
+                  })
                   .filter(
                     (note) =>
-                      note.tags.includes(searchParams.tag) || !searchParams.tag
+                      note?.tags?.includes(searchParams?.tag) || !searchParams?.tag
                   )
                   .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                   .map((note) => (
@@ -58,8 +64,11 @@ export default async function Home({
                             ))}
                           </CardDescription>
                         </CardHeader>
+                        <CardContent>
+                        <p>{note.createdAt}</p>
+                        </CardContent>
                         <CardFooter>
-                          <p>{note.createdAt}</p>
+                          <p className="text-red-500">{note.isArchive && "Note Archived"}</p>
                         </CardFooter>
                       </Link>
                     </Card>

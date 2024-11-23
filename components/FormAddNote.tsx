@@ -18,11 +18,11 @@ const FormAddNote = () => {
     >
       <div className='flex   items-center gap-4'>
         <Label className='w-24'>Title</Label>
-        <Input name='title' />
+        <Input name='title' required/>
       </div>
       <div className='flex   items-center gap-4'>
         <Label className='w-24'>Tags</Label>
-        <Input name='tags' />
+        <Input name='tags' required/>
       </div>
       <div className='flex  items-center gap-4'>
         <Label className='w-24'>Title-1</Label>

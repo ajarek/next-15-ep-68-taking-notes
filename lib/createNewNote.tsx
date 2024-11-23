@@ -34,8 +34,8 @@ export const createNewNote = async (formData: FormData) => {
       content: content3 as string,
     },
 
-    createdAt: new Date().toLocaleDateString(),
-    updatedAt: new Date().toLocaleDateString(),
+    createdAt: new Date().toLocaleDateString(('sv-SE')),
+    updatedAt: new Date().toLocaleDateString(('sv-SE')),
     isArchive: false,
   })
 
