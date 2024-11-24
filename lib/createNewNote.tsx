@@ -6,7 +6,6 @@ import fs from "fs/promises"
 
 export const createNewNote = async (formData: FormData) => {
   const notes = (await fetchNotes()) as Note[]
-
   const title = formData.get("title")
   const tags = formData.get("tags")
   const title1 = formData.get("title1")
@@ -34,8 +33,8 @@ export const createNewNote = async (formData: FormData) => {
       content: content3 as string,
     },
 
-    createdAt: new Date().toLocaleDateString(('sv-SE')),
-    updatedAt: new Date().toLocaleDateString(('sv-SE')),
+    createdAt: new Date().toLocaleDateString("sv-SE"),
+    updatedAt: new Date().toLocaleDateString("sv-SE"),
     isArchive: false,
   })
 

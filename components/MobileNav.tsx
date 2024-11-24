@@ -44,7 +44,6 @@ const MobileNav = async () => {
             aria-label='Shop'
           >
             <House />
-            
           </Link>
           <Link
             href='/archive'
@@ -53,7 +52,7 @@ const MobileNav = async () => {
             })} h-7 text-[18px] w-fit`}
             aria-label='About Us'
           >
-            <Archive /> 
+            <Archive />
           </Link>
 
           <Tags />

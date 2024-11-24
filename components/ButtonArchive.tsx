@@ -14,7 +14,7 @@ const ButtonArchive = ({ id }: { id: number }) => {
     >
       <input type='hidden' name='id' value={id} />
 
-      <Button className="w-full">
+      <Button className='w-full'>
         <Archive />
         Toggle Archiving
       </Button>

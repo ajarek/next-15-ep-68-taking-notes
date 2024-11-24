@@ -14,7 +14,7 @@ const ButtonDelete = ({ id }: { id: number }) => {
     >
       <input type='hidden' name='id' value={id} />
 
-      <Button variant={"destructive"} className="w-full">
+      <Button variant={"destructive"} className='w-full'>
         <Trash2 />
         Delete Note
       </Button>

@@ -22,12 +22,9 @@ export const updateNote = async (formData: FormData) => {
   const title3 = formData?.get("title3")
   const content3 = formData?.get("content3")
 
- 
   const note = notes.find((note) => note?.id === idNumber)
 
-   
-
- const newNote= {
+  const newNote = {
     id: idNumber,
     title: title as string,
     tags:
@@ -46,7 +43,7 @@ export const updateNote = async (formData: FormData) => {
     },
 
     createdAt: note?.createdAt,
-    updatedAt: new Date().toLocaleDateString(('sv-SE')),
+    updatedAt: new Date().toLocaleDateString("sv-SE"),
     isArchive: false,
   }
 

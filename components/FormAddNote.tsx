@@ -1,10 +1,10 @@
-'use client'
-import Form from 'next/form'
-import { createNewNote } from '@/lib/createNewNote'
-import { useRef } from 'react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
+"use client"
+import Form from "next/form"
+import { createNewNote } from "@/lib/createNewNote"
+import { useRef } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
 
 const FormAddNote = () => {
   const ref = useRef<HTMLFormElement>(null)
@@ -18,11 +18,11 @@ const FormAddNote = () => {
     >
       <div className='flex   items-center gap-4'>
         <Label className='w-24'>Title</Label>
-        <Input name='title' required/>
+        <Input name='title' required />
       </div>
       <div className='flex   items-center gap-4'>
         <Label className='w-24'>Tags</Label>
-        <Input name='tags' required/>
+        <Input name='tags' required />
       </div>
       <div className='flex  items-center gap-4'>
         <Label className='w-24'>Title-1</Label>
@@ -48,7 +48,6 @@ const FormAddNote = () => {
         <Label className='w-24'>Content-3</Label>
         <Input name='content3' />
       </div>
-      
 
       <Button type='submit'>Submit</Button>
     </Form>

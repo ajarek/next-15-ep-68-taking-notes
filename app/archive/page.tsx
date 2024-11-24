@@ -1,4 +1,4 @@
-import  {Search}  from "@/components/Search"
+import { Search } from "@/components/Search"
 import { Input } from "@/components/ui/input"
 import {
   Card,
@@ -9,20 +9,19 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import NoteId from "@/components/NoteId"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 import { auth } from "@/app/api/auth/auth"
 import StartPage from "@/components/StartPage"
-import { fetchNotes } from '@/lib/fetch'
+import { fetchNotes } from "@/lib/fetch"
 
 export default async function Archive({
   searchParams,
 }: {
-  searchParams: { id: string; tag: string, query: string}
+  searchParams: { id: string; tag: string; query: string }
 }) {
-  
   const { id, tag, query } = await searchParams
-  const notesData= await fetchNotes()
+  const notesData = await fetchNotes()
 
   const tagsArchive = notesData
     .filter((note) => note.isArchive === true)
@@ -40,21 +39,27 @@ export default async function Archive({
           </div>
           <div className='grid grid-cols-[1fr_3fr] p-2'>
             <div className='flex flex-col gap-2'>
-              <Button className='flex items-center gap-2'>
+              <Link
+                href='/add-note'
+                className={`${buttonVariants({
+                  variant: "default",
+                })} h-7 text-[18px] w-full`}
+              >
                 <Plus />
                 Create New Note
-              </Button>
+              </Link>
               {tagsArchive
-              .filter((note) => {
-                const searchQuery = query?.toUpperCase() || '';
-                const noteTitle = note?.title?.toUpperCase() || '';
-                return noteTitle.includes(searchQuery) || !query;
-              })
-                .filter(
-                  (note) =>
-                    note.tags.includes(tag) || !tag
+                .filter((note) => {
+                  const searchQuery = query?.toUpperCase() || ""
+                  const noteTitle = note?.title?.toUpperCase() || ""
+                  return noteTitle.includes(searchQuery) || !query
+                })
+                .filter((note) => note.tags.includes(tag) || !tag)
+                .sort(
+                  (a, b) =>
+                    new Date(b.updatedAt).getTime() -
+                    new Date(a.updatedAt).getTime()
                 )
-                .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                 .map((note) => (
                   <Card key={note.id}>
                     <Link href={`/?id=${note.id}`}>
