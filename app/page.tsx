@@ -14,12 +14,15 @@ import { Plus } from "lucide-react"
 import { auth } from "@/app/api/auth/auth"
 import StartPage from "@/components/StartPage"
 import { fetchNotes } from '@/lib/fetch'
+import * as React from 'react'
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: { id: string; tag: string; query: string }
 }) {
+
+  const { id, tag, query } = await searchParams
   const session = await auth()
   const notesData= await fetchNotes()
   
@@ -44,13 +47,13 @@ export default async function Home({
               <div className="max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 max-lg:gap-2">
                 {notesData
                   .filter((note) => {
-                    const searchQuery = searchParams?.query?.toUpperCase() || '';
+                    const searchQuery = query?.toUpperCase() || '';
                     const noteTitle = note?.title?.toUpperCase() || '';
-                    return noteTitle.includes(searchQuery) || !searchParams?.query;
+                    return noteTitle.includes(searchQuery) || !query;
                   })
                   .filter(
                     (note) =>
-                      note?.tags?.includes(searchParams?.tag) || !searchParams?.tag
+                      note?.tags?.includes(tag) || !tag
                   )
                   .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                   .map((note) => (
@@ -65,7 +68,7 @@ export default async function Home({
                           </CardDescription>
                         </CardHeader>
                         <CardContent>
-                        <p>{note.createdAt}</p>
+                        <p>{note.updatedAt}</p>
                         </CardContent>
                         <CardFooter>
                           <p className="text-red-500">{note.isArchive && "Note Archived"}</p>
@@ -77,7 +80,7 @@ export default async function Home({
             </div>
 
             <div className=''>
-              <NoteId id={searchParams.id} />
+              <NoteId id={id} />
             </div>
           </div>
         </div>

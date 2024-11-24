@@ -20,7 +20,8 @@ export default async function Archive({
 }: {
   searchParams: { id: string; tag: string, query: string}
 }) {
-
+  
+  const { id, tag, query } = await searchParams
   const notesData= await fetchNotes()
 
   const tagsArchive = notesData
@@ -45,14 +46,15 @@ export default async function Archive({
               </Button>
               {tagsArchive
               .filter((note) => {
-                const searchQuery = searchParams?.query?.toUpperCase() || '';
+                const searchQuery = query?.toUpperCase() || '';
                 const noteTitle = note?.title?.toUpperCase() || '';
-                return noteTitle.includes(searchQuery) || !searchParams?.query;
+                return noteTitle.includes(searchQuery) || !query;
               })
                 .filter(
                   (note) =>
-                    note.tags.includes(searchParams.tag) || !searchParams.tag
+                    note.tags.includes(tag) || !tag
                 )
+                .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                 .map((note) => (
                   <Card key={note.id}>
                     <Link href={`/?id=${note.id}`}>
@@ -65,7 +67,7 @@ export default async function Archive({
                         </CardDescription>
                       </CardHeader>
                       <CardFooter>
-                        <p>{note.createdAt}</p>
+                        <p>{note.updatedAt}</p>
                       </CardFooter>
                     </Link>
                   </Card>
@@ -73,7 +75,7 @@ export default async function Archive({
             </div>
 
             <div className=''>
-              <NoteId id={searchParams.id} />
+              <NoteId id={id} />
             </div>
           </div>
         </div>

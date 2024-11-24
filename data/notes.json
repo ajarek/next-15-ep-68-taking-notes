@@ -25,7 +25,7 @@
   },
   {
     "id": 2,
-    "title": "Next.js Performance Optimization",
+    "title": "Next.js Performance Optimization ",
     "tags": [
       "next.js",
       "performance",
@@ -43,9 +43,9 @@
       "title": "Code Splitting and Bundling:",
       "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
     },
-    "isArchive": false,
     "createdAt": "2024-11-18",
-    "updatedAt": "2024-11-18"
+    "updatedAt": "2024-11-24",
+    "isArchive": false
   },
   {
     "id": 3,
@@ -67,9 +67,9 @@
       "title": "Code Splitting and Bundling:",
       "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
     },
-    "isArchive": false,
     "createdAt": "2024-11-19",
-    "updatedAt": "2024-11-19"
+    "updatedAt": "2024-11-24",
+    "isArchive": false
   },
   {
     "id": 4,
@@ -90,7 +90,7 @@
       "title": "Code Splitting and Bundling:",
       "content": "Use next/dynamic to load components on demand, reducing the initial load time and improving performance."
     },
-    "isArchive": false,
+    "isArchive": true,
     "createdAt": "2024-11-20",
     "updatedAt": "2024-11-20"
   },

@@ -4,6 +4,7 @@ import { Button } from "./ui/button"
 import { fetchNotes } from '@/lib/fetch'
 import ButtonDelete from './ButtonDelete'
 import ButtonArchive from './ButtonArchive'
+import ButtonUpdate from './ButtonUpdate'
 
 const NoteId = async({ id }: { id: string }) => {
   const notesData= await fetchNotes()
@@ -42,6 +43,7 @@ const NoteId = async({ id }: { id: string }) => {
       </div>
       <div className='flex flex-col gap-4 border-l-2 max-lg:border-none p-4'>
         <ButtonArchive id={+id} />
+        <ButtonUpdate id={+id} />
         <ButtonDelete id={+id} /> 
       </div>
     </div>
