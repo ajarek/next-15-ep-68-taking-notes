@@ -5,7 +5,8 @@ import { Note } from "@/types/typeNote"
 
 const Update = async ({ searchParams }: { searchParams: { id: string } }) => {
   const notes = await fetchNotes()
-  const note = notes.find((nt) => nt.id === +searchParams.id)
+  const { id } = await searchParams
+  const note = notes.find((nt) => nt.id === +id)
 
   return (
     <div className='min-h-screen max-lg:ml-0 ml-[200px] flex flex-col p-8 gap-4'>
