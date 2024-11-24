@@ -1,5 +1,4 @@
 import { Search } from "@/components/Search"
-import { Input } from "@/components/ui/input"
 import {
   Card,
   CardDescription,

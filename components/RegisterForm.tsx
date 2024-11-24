@@ -16,11 +16,11 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [img, setImage] = useState("")
-  const [isAdmin, setIsAdmin] = useState(DEFAULT_IS_ADMIN)
+  const [isAdmin] = useState(DEFAULT_IS_ADMIN)
 
   const router = useRouter()
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData: UserWithoutId = {
       username,
