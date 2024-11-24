@@ -3,7 +3,11 @@ import FormUpdateNote from "@/components/FormUpdateNote"
 import { fetchNotes } from "@/lib/fetch"
 import { Note } from "@/types/typeNote"
 
-const Update = async ({ searchParams }: { searchParams: { id: string } }) => {
+const Update = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ id: string }>
+}) => {
   const notes = await fetchNotes()
   const { id } = await searchParams
   const note = notes.find((nt) => nt.id === +id)

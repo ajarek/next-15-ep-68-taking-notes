@@ -17,7 +17,7 @@ import { fetchNotes } from "@/lib/fetch"
 export default async function Archive({
   searchParams,
 }: {
-  searchParams: { id: string; tag: string; query: string }
+  searchParams: Promise<{ id: string; tag: string; query: string }>
 }) {
   const { id, tag, query } = await searchParams
   const notesData = await fetchNotes()

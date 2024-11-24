@@ -19,7 +19,7 @@ import * as React from "react"
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { id: string; tag: string; query: string }
+  searchParams: Promise<{ id: string; tag: string; query: string }>
 }) {
   const { id, tag, query } = await searchParams
   const session = await auth()
