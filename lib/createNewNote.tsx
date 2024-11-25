@@ -39,6 +39,6 @@ export const createNewNote = async (formData: FormData) => {
     isArchive: false,
   })
 
-  await fs.writeFile(path.resolve(process.cwd(), "data/notes.json"), JSON.stringify(notes, null, 2))
+  await fs.writeFile(path.join(process.cwd(), "data/notes.json"), JSON.stringify(notes, null, 2))
   redirect("/")
 }
