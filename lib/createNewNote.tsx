@@ -3,6 +3,7 @@ import type { Note } from "@/types/typeNote"
 import { fetchNotes } from "./fetch"
 import { redirect } from "next/navigation"
 import fs from "fs/promises"
+import path from "path"
 
 export const createNewNote = async (formData: FormData) => {
   const notes = (await fetchNotes()) as Note[]
@@ -38,6 +39,6 @@ export const createNewNote = async (formData: FormData) => {
     isArchive: false,
   })
 
-  await fs.writeFile("data/notes.json", JSON.stringify(notes, null, 2))
+  await fs.writeFile(path.resolve(process.cwd(), "data/notes.json"), JSON.stringify(notes, null, 2))
   redirect("/")
 }
